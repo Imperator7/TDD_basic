@@ -1,4 +1,5 @@
-from logic import Cafe
+from pytest import raises
+from logic import Cafe, DrinkNotInMenu
 
 def test_buy_tea_with_50_baht_change_should_be_30_baht():
   cafe = Cafe()
@@ -10,7 +11,7 @@ def test_should_return_coffee_and_the_change_of_70_baht_when_buying_coffee_with_
   drink, change = cafe.buy("coffee", 100.0)
   assert (drink, change) == ("coffee", 70.0)
 
-def test_shoud_return_sorry_we_dont_have_when_buying_drinks_out_of_the_list():
+def test_shoud_return_raise_DrinkNotInMenu_when_buying_cocoa():
   cafe = Cafe()
-  drink, change = cafe.buy("cocoa", 10.0)
-  assert (drink, change) == ("Sorry. We don't have cocoa.", 10.0)
+  with raises(DrinkNotInMenu):
+    cafe.buy("cocoa", 50.0)
