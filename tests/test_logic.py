@@ -9,3 +9,8 @@ def test_should_return_coffee_and_the_change_of_70_baht_when_buying_coffee_with_
   cafe = Cafe()
   drink, change = cafe.buy("coffee", 100.0)
   assert (drink, change) == ("coffee", 70.0)
+
+def test_shoud_return_sorry_we_dont_have_when_buying_drinks_out_of_the_list():
+  cafe = Cafe()
+  drink, change = cafe.buy("cocoa", 10.0)
+  assert (drink, change) == ("Sorry. We don't have cocoa.", 10.0)
